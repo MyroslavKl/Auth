@@ -1,0 +1,51 @@
+﻿@{
+    List<Role> roles = new List<Role>
+    {
+    new Role()
+    {
+        RoleId = 1,
+        RoleName = "Teacher"
+    },
+    new Role()
+    {
+        RoleId = 2,
+        RoleName = "Admin"
+    },
+        new Role()
+    {
+        RoleId = 3,
+        RoleName = "Student"
+    }
+    };
+}
+
+<h2>Register</h2>
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label for="UserName">First Name:</label>
+        <input type="text" class="form-control" id="UserName" name="UserName" required>
+    </div>
+    <div class="form-group">
+        <label for="UserSurname">Last Name:</label>
+        <input type="text" class="form-control" id="UserSurname" name="UserSurname" required>
+    </div>
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" class="form-control" id="Email" name="Email" required>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password:</label>
+        <input type="password" class="form-control" id="Password" name="Password" required>
+    </div>
+    <div class="form-group">
+        <label for="RoleId">Role:</label>
+  <select class="form-control" id="RoleId" name="RoleId" required>
+            <option value="">Select Role</option>
+            @foreach (var role in roles)
+            {
+                <option value="@role.RoleId">@role.RoleName</option>
+            }
+        </select> 
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Lab2.Models.Course>
+
+@{
+    ViewBag.Title = "Course";
+    Layout = "_Layout";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .action-buttons a {
+        text-decoration: none;
+        color: #007bff;
+        margin-right: 10px;
+    }
+</style>
+
+<h2>Courses</h2>
+<button>
+    <a asp-action="Create">Create</a>
+</button>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CourseName</td>
+                <td class="action-buttons">
+                    <a asp-action="Details" asp-route-id="@item.CourseId">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

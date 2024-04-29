@@ -1,0 +1,35 @@
+﻿@model Lab2.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+        <hr />
+        <h4>Tutors</h4>
+            @foreach (var tutor in Model.CourseTutors.Select(g => g.Tutor))
+            {
+            <dd class="col-sm-10">
+                    @Html.DisplayFor(model => tutor.Name)
+                    @Html.DisplayFor(model => tutor.Surname)
+            </dd>
+
+            }
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId}) |
+    @Html.ActionLink("Back to List", "Index")
+</div>

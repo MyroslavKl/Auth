@@ -1,0 +1,23 @@
+﻿@model List<Student>
+
+<div style="max-width: 400px; margin: 0 auto;">
+    <h3 style="text-align: center;">Assign Grade to All Students</h3>
+    <form method="post" action="@Url.Action("AssignGrades")">
+        <div style="margin-bottom: 10px;">
+            <label for="studentIds">Select Students:</label>
+            <select name="studentIds" multiple style="width: 100%;">
+                @foreach (var student in Model)
+                {
+                    <option value="@student.StudentId">@student.Name</option>
+                }
+            </select>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="value">Enter Grade:</label>
+            <input type="number" name="value" id="value" min="0" max="100" required style="width: 100%;">
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Assign Grade to Selected Students</button>
+        </div>
+    </form>
+</div>

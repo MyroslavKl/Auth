@@ -1,0 +1,42 @@
+﻿@model Lab2.Models.Course
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Course Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+        <h4>
+            Tutors</h4>
+        @foreach (var tutor in Model.CourseTutors.Select(g => g.Tutor))
+        {
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => tutor.Name)
+                @Html.DisplayFor(model => tutor.Surname)
+            </dd>
+
+        }
+    </dl>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
